@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A0FBCF42-1E48-4692-BA68-2BE684EA0967}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7166EA52-9722-4495-BAFC-9C71904D602B}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8C83820D-3773-43C9-AEFF-330697EBA41A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trailz.Api", "src\Trailz.Api\Trailz.Api.csproj", "{A6EF0E87-C204-45F1-94BF-C09523A33237}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trailz.Core", "src\Trailz.Core\Trailz.Core.csproj", "{7EF9E822-6458-45A5-BC8D-BC6D4E8016F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trailz.Infrastructure", "src\Trailz.Infrastructure\Trailz.Infrastructure.csproj", "{071E5467-5761-4FBE-8AFD-4EDEDEE7629C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A6EF0E87-C204-45F1-94BF-C09523A33237} = {A0FBCF42-1E48-4692-BA68-2BE684EA0967}
+		{7EF9E822-6458-45A5-BC8D-BC6D4E8016F4} = {A0FBCF42-1E48-4692-BA68-2BE684EA0967}
+		{071E5467-5761-4FBE-8AFD-4EDEDEE7629C} = {A0FBCF42-1E48-4692-BA68-2BE684EA0967}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6EF0E87-C204-45F1-94BF-C09523A33237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6EF0E87-C204-45F1-94BF-C09523A33237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6EF0E87-C204-45F1-94BF-C09523A33237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6EF0E87-C204-45F1-94BF-C09523A33237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EF9E822-6458-45A5-BC8D-BC6D4E8016F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EF9E822-6458-45A5-BC8D-BC6D4E8016F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EF9E822-6458-45A5-BC8D-BC6D4E8016F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EF9E822-6458-45A5-BC8D-BC6D4E8016F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{071E5467-5761-4FBE-8AFD-4EDEDEE7629C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{071E5467-5761-4FBE-8AFD-4EDEDEE7629C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{071E5467-5761-4FBE-8AFD-4EDEDEE7629C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{071E5467-5761-4FBE-8AFD-4EDEDEE7629C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
