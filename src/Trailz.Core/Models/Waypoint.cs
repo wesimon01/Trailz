@@ -1,6 +1,6 @@
 namespace Trailz.Core.Models;
 
-public class Waypoint
+public class Waypoint : BaseEntity
 {
     public Guid Id { get; set; }
     public Guid TrailId { get; set; }

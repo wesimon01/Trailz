@@ -1,8 +1,6 @@
-using System.Security.Principal;
-
 namespace Trailz.Core.Models;
 
-public class TrailPhoto
+public class TrailPhoto : BaseEntity
 {
     public Guid Id { get; set; }
     public Guid TrailId { get; set; }

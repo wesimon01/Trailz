@@ -1,6 +1,6 @@
 namespace Trailz.Core.Models;
 
-public class Review
+public class Review : BaseEntity
 {
     public Guid Id { get; set; } 
     public Guid TrailId { get; set; }

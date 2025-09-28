@@ -1,13 +1,13 @@
 namespace Trailz.Core.Models;
 
-public class Trail
+public class Trail : BaseEntity
 {
     public Guid Id { get; set; }
     public string Name { get; set; } = null!;
     public string Description { get; set; } = null!;
-    public double LengthMiles { get; set; }
+    public decimal LengthMiles { get; set; }
     public DifficultyLevel? Difficulty { get; set; } 
-    public double ElevationGainFeet { get; set; }
+    public decimal ElevationGainFeet { get; set; }
     public bool IsLoop { get; set; }
 
     public ICollection<Review> Reviews { get; set; } = [];

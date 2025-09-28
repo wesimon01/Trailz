@@ -2,6 +2,8 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Trailz.Api.Configuration;
+using Trailz.Core.Features.Reviews.Read;
+using Trailz.Core.Features.Trails.Read;
 using Trailz.Infrastructure;
 using Trailz.Infrastructure.Database;
 
@@ -37,6 +39,10 @@ public static class IServiceCollectionExtensions
     public static IServiceCollection AddDependencyInjection(this IServiceCollection services)
     {
         services.AddValidatorsFromAssemblyContaining<IInfrastructureAssemblyMarker>();
+
+        services.AddTransient<TrailReadService>();
+        services.AddTransient<ReviewReadService>();
+
         return services;
     }
 }

@@ -1,4 +1,3 @@
-using Trailz.Api;
 using Trailz.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
