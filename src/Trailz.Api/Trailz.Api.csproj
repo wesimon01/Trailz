@@ -27,10 +27,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Filters\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Trailz.Core\Trailz.Core.csproj" />
       <ProjectReference Include="..\Trailz.Infrastructure\Trailz.Infrastructure.csproj" />
     </ItemGroup>

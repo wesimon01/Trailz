@@ -11,8 +11,4 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Features\Trails\Update\" />
-    </ItemGroup>
-
 </Project>

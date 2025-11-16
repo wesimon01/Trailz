@@ -6,7 +6,7 @@ namespace Trailz.Api.Features.Reviews
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ReviewsEndpoints : ControllerBase
+    public class ReviewEndpoints : ControllerBase
     {
         [HttpGet]
         public async Task<IActionResult> GetAllReviews()

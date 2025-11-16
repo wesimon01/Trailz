@@ -9,7 +9,7 @@ public class DeleteTrailUseCase(IDbContext dbContext)
         var trail = await dbContext.Set<Trail>().FindAsync(id, ct);
         if (trail is null)
         {
-            return Result.Failure(new Error("", ""));
+            return Result.Failure(new Error(ErrorCode.NotFound, "Trail not found"));
         }
 
         dbContext.Set<Trail>().Remove(trail);

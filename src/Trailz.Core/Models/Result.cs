@@ -1,6 +1,14 @@
 ﻿namespace Trailz.Core.Models;
 
-public record Error(string Message, string Code);
+public enum ErrorCode
+{
+    NotFound,
+    ValidationError,
+    ImportError,
+    DataError
+}
+
+public record Error(ErrorCode Code, string Message);
 
 public record Result
 {
@@ -36,5 +44,5 @@ public record Result<T> : Result
     }
 
     public static Result<T> Success(T value) => new(value);
-    public new static Result<T> Failure(Error error) => new(error);
+    public static Result<T> Failure(Error error) => new(error);
 }

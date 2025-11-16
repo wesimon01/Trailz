@@ -36,7 +36,7 @@ namespace Trailz.Core.Features.Reviews.Read
 
             if (review is null)
             {
-                return Result<IEnumerable<ReviewResponse>>.Failure(new Error("", ""));
+                return Result<IEnumerable<ReviewResponse>>.Failure(new Error(ErrorCode.NotFound, ""));
             }
 
             return Result<IEnumerable<ReviewResponse>>.Success(review);

@@ -19,7 +19,8 @@ public class CreateTrailUseCase
             Description = request.Description,
             LengthMiles = request.LengthMiles,
             Difficulty = request.DifficultyLevel,
-
+            ElevationGainFeet = request.ElevationGainFeet,
+            IsLoop = request.IsLoop
         };
 
         _dbContext.Set<Trail>().Add(trail);

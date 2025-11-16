@@ -1,15 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Trailz.Api.Filters;
 using Trailz.Core.Features.Trails.Create;
 using Trailz.Core.Features.Trails.Delete;
 using Trailz.Core.Features.Trails.Read;
+using Trailz.Core.Features.Trails.Update;
 
 namespace Trailz.Api.Features.Trails;
 
 [Route("/trails")]
 [ApiController]
 [AllowAnonymous]
-public class TrailsEndpoints : ControllerBase
+public class TrailEndpoints : ControllerBase
 {
     [HttpGet("{id}")]
     public async Task<IActionResult> GetTrailById(
@@ -19,11 +21,9 @@ public class TrailsEndpoints : ControllerBase
     {
         var result = await service.GetByIdAsync(id, ct);
 
-        if (result.IsSuccess)
-        {
-            return Ok(result.Value);
-        }
-        return NotFound(result.Error.Message);
+        return result.IsSuccess ? 
+            Ok(result.Value) :
+            NotFound(result.Error.Message);
     }
 
     [HttpGet]
@@ -40,7 +40,8 @@ public class TrailsEndpoints : ControllerBase
         return Ok(results);
     }
 
-
+    [HttpPost]
+    [ServiceFilter(typeof(ValidationActionFilter<CreateTrailValidator>))]
     public async Task<IActionResult> CreateTrail(
         CreateTrailRequest request, 
         CreateTrailUseCase useCase, 
@@ -51,17 +52,26 @@ public class TrailsEndpoints : ControllerBase
         return Ok(result);
     }
 
-    //[HttpPut("{id}")]
-    //public IActionResult UpdateTrail(Guid id, 
-    //    UpdateTrailRequest request, 
-    //    [FromServices] UpdateCategoryUseCase useCase, 
-    //    CancellationToken ct)
-    //{
+    [HttpPut("{id:guid}")]
+    [ServiceFilter(typeof(ValidationActionFilter<UpdateTrailValidator>))]
+    public async Task<IActionResult> UpdateTrail(
+        Guid id,
+        UpdateTrailRequest request,
+        UpdateTrailUseCase useCase,
+        CancellationToken ct)
+    {
+        var result = await useCase.Execute(id, request, ct);
 
-    //}
+        return result.IsSuccess ?
+          Ok(result.Value) :
+          NotFound(result.Error.Message);
+    }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteTrail(Guid id, DeleteTrailUseCase useCase, CancellationToken ct)
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteTrail(
+        Guid id, 
+        DeleteTrailUseCase useCase, 
+        CancellationToken ct)
     {
         var result = await useCase.Execute(id, ct);
 
@@ -70,7 +80,7 @@ public class TrailsEndpoints : ControllerBase
             return NoContent();
         }
 
-        return result.Error.Code == ""
+        return result.Error.Code == ErrorCode.NotFound
             ? NotFound(result.Error.Message)
             : BadRequest(result.Error.Message);
     }
