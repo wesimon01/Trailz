@@ -1,34 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Trailz.Core.Models;
 
-namespace Trailz.Core.Models
+public record Error(string Message, string Code);
+
+public record Result
 {
-    public readonly record struct Error(string message, string code);
+    public Error? Error { get; }
+    public bool IsSuccess => Error is null;
 
-    public readonly record struct Result<T>
+    protected Result()
     {
-        public Error? Error { get; }
-
-        public T? Value { get; }
-
-        public bool IsSuccess => Error is null;
-
-        private Result(T value)
-        {
-            Value = value;
-            Error = null;
-        }
-
-        private Result(Error error)
-        {
-            Value = default;
-            Error = error;
-        }
-
-        public static Result<T> Success(T value) => new(value);
-        public static Result<T> Failure(Error error) => new(error);
+        Error = null;
     }
+
+    protected Result(Error error)
+    {
+        Error = error;
+    }
+
+    public static Result Success() => new();
+    public static Result Failure(Error error) => new(error);
+}
+
+public record Result<T> : Result
+{
+    public T? Value { get; }
+
+    private Result(T value) : base()
+    {
+        Value = value;
+    }
+
+    private Result(Error error) : base(error)
+    {
+        Value = default;
+    }
+
+    public static Result<T> Success(T value) => new(value);
+    public new static Result<T> Failure(Error error) => new(error);
 }

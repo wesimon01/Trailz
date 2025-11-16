@@ -3,6 +3,6 @@
     public interface IDbContext
     {
         DbSet<TEntity> Set<TEntity>() where TEntity : class, IEntity;
-        Task<int> SaveChangesAsync();
+        Task<int> SaveChangesAsync(CancellationToken ct = default);
     }
 }

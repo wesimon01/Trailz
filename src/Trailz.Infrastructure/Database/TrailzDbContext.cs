@@ -1,21 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Trailz.Core.Models;
 using Trailz.Core.Shared;
 
 namespace Trailz.Infrastructure.Database;
 
-public class TrailzDbContext : DbContext, IDbContext  
+public class TrailzDbContext(
+    DbContextOptions<TrailzDbContext> options,
+    TimeProvider timeProvider) : DbContext(options), IDbContext  
 {
-    private readonly TimeProvider timeProvider;
-
-    public TrailzDbContext(
-        DbContextOptions<TrailzDbContext> options, 
-        TimeProvider timeProvider) : base(options)
-    {
-        this.timeProvider = timeProvider;
-    }
-
     public new DbSet<TEntity> Set<TEntity>() where TEntity : class, IEntity
     {
         return base.Set<TEntity>();
@@ -41,10 +33,5 @@ public class TrailzDbContext : DbContext, IDbContext
         }
 
         return await base.SaveChangesAsync(ct);
-    }
-
-    public Task<int> SaveChangesAsync()
-    {
-        throw new NotImplementedException();
     }
 }

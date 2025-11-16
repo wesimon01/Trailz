@@ -7,7 +7,7 @@ public record TrailResponse(
     decimal LengthMiles, 
     DifficultyLevel? Difficulty, 
     decimal ElevationGainFeet, 
-    bool isLoop);
+    bool IsLoop);
 
 public record TrailGetAllRequest(int? Page, int? PageSize);
 
